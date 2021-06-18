@@ -13,5 +13,6 @@ The sample chart is here:
 Required packages:
 - Pandas
 - NumPy
+- Plotly
 - Scikit-Learn (for splitting  train and test)
 - datascientists (for standardization)
