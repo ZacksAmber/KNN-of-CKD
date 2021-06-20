@@ -1,8 +1,10 @@
 # KNN-of-CKD
 
-This project is Machine Learning project for predicting [Chronic Kidney Disease (CKD)](https://www.cdc.gov/kidneydisease/basics.html) by using [K-Nearest Neighbors (KNN)](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm).
+This is a Machine Learning project for predicting [Chronic Kidney Disease (CKD)](https://www.cdc.gov/kidneydisease/basics.html) by using [K-Nearest Neighbors (KNN)](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm).
 
-The method I defined is KNN, which accepts multiple attributes, such as `Hemoglobin` and `Glucose`, to predict CKD or visualize the predictions in scatter plot. KNN also supports showing the [Decision Boundary](https://en.wikipedia.org/wiki/Decision_boundary). For visualization, it can only present 2 or 3 attributes. For prediction, there is no restriction.
+The method I defined is `KNN`, which accepts multiple attributes, such as `Hemoglobin` and `Glucose`, to predict or visualize CKD in scatter plot. `KNN` also supports showing the [Decision Boundary](https://en.wikipedia.org/wiki/Decision_boundary). 
+- For visualization, it can only present 2 or 3 attributes.
+- For prediction, there is no restriction.
 
 The sample visualization is here:
 
