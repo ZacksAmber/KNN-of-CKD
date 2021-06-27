@@ -13,6 +13,8 @@ LinkedIn: https://www.linkedin.com/in/zacks-shen/
 
 ### Chronic Kidney Disease
 
+> [One in Seven American Adults Estimated to Have Chronic Kidney Disease](https://www.kidney.org/news/one-seven-american-adults-estimated-to-have-chronic-kidney-disease)
+
 This is a Machine Learning project for predicting [Chronic Kidney Disease (CKD)](https://www.cdc.gov/kidneydisease/basics.html) by using [K-Nearest Neighbors (KNN)](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm).
 
 The project is about forecasting if a person has CKD based on two or three attributes from `Hemoglobin`, `Glucose`, and `White Blood Cell Count`. If the one has CKD the `Class` is `1`.
@@ -428,15 +430,19 @@ The module I developed is `KNN`, which is included in the package [datascientist
   </tbody>
 </table>
 
+The last step of data preprocessing is randomly and evenly split dataset ckd into two DataFrames: train and test.
+
+We will use the train to build the KNN model. Module KNN can forecast the class of the test based on the KNN model. Because we already know the class of test. We can compare the class and predicted class to evaluate the accuracy of the model.
+
 ---
 
 ## Visualizations
 
 ### 2D Static Scatter
 
-![](https://raw.githubusercontent.com/ZacksAmber/PicGo/master/img/20210625021417.svg)
+![](https://raw.githubusercontent.com/ZacksAmber/PicGo/master/img/20210625171142.svg)
 
-![](https://raw.githubusercontent.com/ZacksAmber/PicGo/master/img/20210625021526.svg)
+![](https://raw.githubusercontent.com/ZacksAmber/PicGo/master/img/20210625171248.svg)
 
 `Hemoglobin` vs. `Glucose` has higher accuracy than `White Blood Cell Count` vs. `Glucose` for predicting `Class` of CKD.
 
@@ -462,9 +468,9 @@ The 3D Scatter: KNN of CKD shows that the accuracy of three attributes seems not
 
 Let's see how module `KNN` works.
 
-For `k=1`, `KNN` will find 1 nearest train point from the test point. Then assign the same `Class` as the 1 nearest train point to the test point.
+For `k=1`, `KNN` will find 1 nearest train point to the test point. Then assign the same `Class` as the 1 nearest train point to the test point.
 
-For `k>1`, `KNN` will find `k` nearest train points from the test point. Then assign the most frequent `Class` of the `k` nearest points to the test point.
+For `k>1`, `KNN` will find `k` nearest train points to the test point. Then assign the most frequent `Class` of the `k` nearest points to the test point.
 
 For higher resolution, please run [KNN-of-CKD.ipynb](https://github.com/ZacksAmber/KNN-of-CKD/blob/main/KNN-of-CKD.ipynb) on your local machine. 
 
@@ -477,12 +483,12 @@ For higher resolution, please run [KNN-of-CKD.ipynb](https://github.com/ZacksAmb
 ### 2D Static Scatter with [Decision Boundary](https://en.wikipedia.org/wiki/Decision_boundary)
 
 What if all of the points on the plot are available for predicting?
-
 Assume we have unlimited data from patients and the data have huge variations. The Decision Boundary can simulate this scenario.
+You can see the transparent dots and opaque dots on the scatter plot.
+The boundary between them is Decision Boundary.
+Any new point that more close to the side of blue will be classified as CKD; vice versa, Any new point that more close to the side of gold will be classified as healthy.
 
-![](https://raw.githubusercontent.com/ZacksAmber/PicGo/master/img/20210625025702.svg)
-
----
+![](https://raw.githubusercontent.com/ZacksAmber/PicGo/master/img/20210625202811.svg)
 
 ---
 
@@ -510,43 +516,43 @@ Let's see the current `predictions`.
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.909362</td>
-      <td>-0.314236</td>
-      <td>-0.152696</td>
+      <td>-0.030400</td>
+      <td>-0.376028</td>
+      <td>0.809777</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>-0.239236</td>
-      <td>-0.221549</td>
-      <td>-0.345191</td>
+      <td>0.213242</td>
+      <td>-0.484162</td>
+      <td>-0.569768</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.735332</td>
-      <td>-0.484162</td>
-      <td>-0.601850</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>-3.685029</td>
+      <td>0.689873</td>
+      <td>-0.986840</td>
+      <td>1.0</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>-0.865744</td>
-      <td>-0.221549</td>
-      <td>-0.569768</td>
-      <td>1.0</td>
-      <td>1.0</td>
+      <td>0.700526</td>
+      <td>-0.406923</td>
+      <td>0.617283</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>-0.970162</td>
-      <td>1.276890</td>
-      <td>-0.345191</td>
-      <td>1.0</td>
-      <td>1.0</td>
+      <td>1.292227</td>
+      <td>-0.175206</td>
+      <td>-0.473521</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>...</th>
@@ -558,50 +564,58 @@ Let's see the current `predictions`.
     </tr>
     <tr>
       <th>74</th>
-      <td>0.004406</td>
-      <td>0.025616</td>
-      <td>0.232293</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>-1.283416</td>
+      <td>-0.221549</td>
+      <td>3.408455</td>
+      <td>1.0</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <th>75</th>
-      <td>0.387272</td>
-      <td>0.118303</td>
-      <td>-0.922675</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>-2.223178</td>
+      <td>1.910252</td>
+      <td>0.424788</td>
+      <td>1.0</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <th>76</th>
-      <td>-2.014342</td>
-      <td>0.489051</td>
-      <td>-0.313108</td>
-      <td>1.0</td>
-      <td>1.0</td>
+      <td>0.282854</td>
+      <td>-0.298788</td>
+      <td>0.296458</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>77</th>
-      <td>1.153004</td>
-      <td>-0.298788</td>
-      <td>-0.409356</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>-2.083954</td>
+      <td>0.643529</td>
+      <td>0.232293</td>
+      <td>1.0</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <th>78</th>
-      <td>-2.814879</td>
-      <td>0.396364</td>
-      <td>0.809777</td>
+      <td>-1.283416</td>
+      <td>-0.947597</td>
+      <td>3.344290</td>
       <td>1.0</td>
       <td>1.0</td>
     </tr>
   </tbody>
 </table>
 
+We can also calculate the accuracy of the model.
+
+For each row in DataFrame predictions, we can count the number of column Predicted Class that is the same as the column Class. Then let it divided by the length of the DataFrame test. The result is the accuracy under the current train test distribution.
+
+The current `Accuracy` is `0.9746835443037974`.
+
 ---
 
-The 1st row of DataFrame `ckd`.
+So let's see how KNN makes a prediction for each row.
+
+The 1st row of the DataFrame `test` is the 1st row in the DataFrame `predictions`. The `Class` is 0, and the `Predicted Class` is 0, too.
 
 <table border="1" class="dataframe">
   <thead>
@@ -615,18 +629,18 @@ The 1st row of DataFrame `ckd`.
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>-0.865744</td>
-      <td>-0.221549</td>
-      <td>-0.569768</td>
-      <td>1</td>
+      <th>119</th>
+      <td>-0.0304</td>
+      <td>-0.376028</td>
+      <td>0.809777</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
 
 ---
 
-The top k(k=5) nearest neighbors from the 1st row in `ckd`.
+The top k(k=5) nearest neighbors to the 1st row in `test`.
 
 <table border="1" class="dataframe">
   <thead>
@@ -641,51 +655,59 @@ The top k(k=5) nearest neighbors from the 1st row in `ckd`.
   </thead>
   <tbody>
     <tr>
-      <th>11</th>
-      <td>-1.178998</td>
-      <td>0.025616</td>
-      <td>-0.730180</td>
-      <td>1</td>
-      <td>0.399022</td>
+      <th>137</th>
+      <td>0.039212</td>
+      <td>-0.530506</td>
+      <td>-0.666015</td>
+      <td>0</td>
+      <td>0.169438</td>
     </tr>
     <tr>
-      <th>24</th>
-      <td>-0.378460</td>
+      <th>156</th>
+      <td>0.178436</td>
+      <td>-0.267893</td>
+      <td>-0.409356</td>
+      <td>0</td>
+      <td>0.235171</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>-0.065206</td>
+      <td>-0.623193</td>
+      <td>0.039798</td>
+      <td>0</td>
+      <td>0.249604</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>0.074018</td>
       <td>-0.144310</td>
-      <td>-0.184779</td>
-      <td>1</td>
-      <td>0.493367</td>
-    </tr>
-    <tr>
-      <th>30</th>
-      <td>-1.318222</td>
-      <td>-0.576849</td>
-      <td>2.638477</td>
-      <td>1</td>
-      <td>0.575304</td>
-    </tr>
-    <tr>
-      <th>86</th>
-      <td>-0.169624</td>
-      <td>-0.453267</td>
-      <td>0.809777</td>
+      <td>0.328540</td>
       <td>0</td>
-      <td>0.733673</td>
+      <td>0.254158</td>
     </tr>
     <tr>
-      <th>59</th>
-      <td>-0.169624</td>
-      <td>0.025616</td>
-      <td>-0.537686</td>
+      <th>120</th>
+      <td>-0.239236</td>
+      <td>-0.221549</td>
+      <td>-1.051005</td>
       <td>0</td>
-      <td>0.738697</td>
+      <td>0.259761</td>
     </tr>
   </tbody>
 </table>
 
-Therefore, the `Predicted Class` of row 0 in ckd is 1 because 3/5 nearest neighbors of row 0 are `Class = 1`. 
+We can call function `_distance` to get the top k nearest neighbors. All of the neighbors are 0, so the `Predicted Class` of this point is 0.
+
+---
+
+The `predict` function works well.
 
 It's time to calculate the best k.
+
+The `best_k` method concatenates `train` and `test` in the `KNN` instance. So `KNN` instance has a complete DataFrame `ckd`. Then it splits the `ckd` into `train` and `test` for 100 times. For each repetition, it stores the current `Accuracy` according to the current `k`. Finally, it returns the average `Accuracy` for each `k`.
+
+For example, I passed `k = 5` to the `best_k` function. Then it returned the average accuracy of 100 repetitions for k from 1 to 5.
 
 <table border="1" class="dataframe">
   <thead>
@@ -728,7 +750,6 @@ It's time to calculate the best k.
 
 ## Conclusion
 
-With `k=1` and the attributes of `Hemoglobin` and `Glucose`, We have 98.37% accuracy for predicting if a person has CKD by applying the `KNN` algorithm.
+With `k=1` and the attributes of `Hemoglobin` and `Glucose`, We have 98.56% accuracy for predicting if a person has CKD by applying the `KNN` algorithm.
 
-The CKD dataset has a clear separation in `Hemoglobin` and `Glucose`. Thus we only need these two attributes with `k=1` to make a accurate prediction. For more complicated datasets, we can use more than two attributes and let the `KNN` module find the best k for prediction.
-
+The CKD dataset has a clear separation in `Hemoglobin` and `Glucose`. Thus we only need these two attributes with `k=1` to make an accurate prediction. For more complicated datasets, we can use more than two attributes and let the `KNN` module find the best k for prediction.
